@@ -1,41 +1,8 @@
 <template>
-    <div class="mainBackgound">
-        <div class="row">
-            <div class="col-md-9">
-            </div>
-            <div class="col-md-3 custom-card">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="d-flex flex-row mb-4 gap-2 text-center align-items-center justify-content-center">
-                            <a href="#" class="normal-btn" @click="openlogin" :class="{ 'active': loginActive }">Login</a>
-                            <a href="#" class="normal-btn" @click="openRegistration" :class="{ 'active': registrationActive }">Create Account</a>
-         
-                        </div>
-                        <hr>
-                        <div class="login-input" v-if="login_input">
-                            <div class="main-input mt-3" v-if="main_input">
-                                <div class="text-center fs-5">
-                                    <strong>User Login:</strong>
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="username" class="form-label">Username:</label>
-                                    <input type="text" id="username" name="username" class="form-control" v-model="formdata.username" placeholder="Enter Your Username">
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="password" class="form-label">Password:</label>
-                                    <input type="password" id="password" name="password" v-model="formdata.password" class="form-control" placeholder="Enter Your Password">
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <button class="btn" @click="login" @keyup.enter="login">Sign in</button>
-                                </div>
-                                <div class="riderApplication">
-                                    You want to be part of our Riders Team? Apply Now
-                                    <router-link class="btn" to="/Application">Click Here!</router-link>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="registration-inputs" v-if="registration_input">
-                            <div class="first-input mt-3" v-if="first_input">
+    <div>
+        <div class="card">
+            <div class="card-body">
+                <div class="first-input mt-3" v-if="first_input">
                                 <div class="text-center fs-5">
                                     <strong>User Inputs:</strong>
                                 </div>
@@ -55,7 +22,7 @@
                                     <input type="password" id="cpassword" name="cpassword" v-model="formdata.cPassword" class="form-control" placeholder="Confirm Your Password">
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <button class="btn" @click="openSecondInput">Next-></button>
+                                    <button @click="openSecondInput">Next-></button>
                                 </div>
                             </div>
                             <div class="second-input" v-if="second_input">
@@ -80,15 +47,14 @@
                                 </div>
                                 <div class="form-group mb-2">
                                     <label for="phone" class="form-label">Phone:</label>
-                                    <input type="tel" id="phone" name="phone" v-model="formdata.phone" class="form-control" placeholder="Pattern: 0000-000-0000" @input="validatePhoneNumber" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}" required><br><br>
-                                    <p v-if="!isPhoneNumberValid">Invalid phone number</p>
+                                    <input type="tel" id="phone" name="phone" v-model="formdata.phone" class="form-control" placeholder="Pattern: 0000-000-0000" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}" required><br><br>
                                 </div>
                                     <div class="d-flex justify-content-start">
-                                        <button class="btn" @click="backFirstInput">Back</button>
+                                        <button @click="backFirstInput">Back</button>
                                     </div>
                                     <span></span>
                                     <div class="d-flex justify-content-end">
-                                        <button class="btn" @click="openThirdInput">Next-></button>
+                                        <button @click="openThirdInput">Next-></button>
                                     </div>
                             </div>
                             <div class="third-input" v-if="third_input">
@@ -116,11 +82,11 @@
                                     <input type="text" id="zipcode" name="zipcode" v-model="formdata.zipcode" class="form-control" placeholder="Enter Your Zipcode">
                                 </div>
                                     <div class="d-flex justify-content-start">
-                                        <button class="btn" @click="backSecondInput">Back</button>
+                                        <button @click="backSecondInput">Back</button>
                                     </div>
                                     <span></span>
                                     <div class="d-flex justify-content-end">
-                                        <button class="btn" @click="openLastInput">Next-></button>
+                                        <button @click="openLastInput">Next-></button>
                                     </div>
                             </div>
                             <div class="last-input" v-if="last_input">
@@ -135,7 +101,7 @@
                                   </div>
                                 </div>
                                 <div class="form-check mb-3">
-                                <input class="form-check-input" v-model="terms" type="checkbox" value="agree" id="invalidCheck" required>
+                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
                                 <label class="form-check-label" for="invalidCheck">
                                     Agree to terms and conditions
                                 </label>
@@ -144,39 +110,36 @@
                                 </div>
                                 </div>
                                 <div class="d-flex justify-content-start">
-                                        <button class="btn" @click="backThirdInput">Back</button>
+                                        <button @click="backThirdInput">Back</button>
                                     </div>
                                     <span></span>
                                     <div class="d-flex justify-content-end">
-                                        <button class="btn" @click="userRegistration">Submit Registration</button>
+                                        <button class="btn btn-success" @click="riderRegistration" type="submit">Submit Registration</button>
                                     </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import {ref,watch} from 'vue';
-import AuthenticationService from '@/service/AuthenticationService';
-import {useAuthStore} from '@/store';
-import {useRouter} from 'vue-router'
-let login_input = ref(true);
-let registration_input =ref(false);
-let first_input = ref(false);
+
+import {ref} from 'vue';
+import axios from 'axios';
+import { useRoute,useRouter } from 'vue-router';
+
+
+const route = useRoute();
+
+let first_input = ref(true);
 let second_input = ref(false);
 let third_input = ref(false);
 let last_input = ref(false);
-let main_input = ref(true);
-let loginActive = ref(true);
-let registrationActive = ref(false);
-const isPhoneNumberValid = ref(true);
-const authStore = useAuthStore();
-const router = useRouter();
 
+    const token = ref('')
+    token.value = route.params.token;
+
+const router = useRouter();
 
 const fileView = ref({ preview: "" });
 const showFile = ref(false);
@@ -197,15 +160,6 @@ const formdata = ref({
     zipcode:'',
     file:null
 });
-watch(formdata.value.phone, (newPhoneNumber) => {
-      isPhoneNumberValid.value = validatePhoneNumber(newPhoneNumber);
-    });
-    
-    function validatePhoneNumber(phoneNumber) {
-      const phonePattern = /^[0-9]{4}-[0-9]{3}-[0-9]{4}$/;
-      return phonePattern.test(phoneNumber);
-    }
-const terms = ref('');
 const passmsg = ref(null)
 const passmsgVisible = ref(false);
 
@@ -250,60 +204,17 @@ const handleimageChange = (event)=>{
     }
 }
 
-const openRegistration = ()=>{
-    loginActive.value = false;
-  registrationActive.value = true;
-    login_input.value = false
-    main_input.value = false
-    registration_input.value = true;
-    first_input.value = true
-    formdata.value.username = '';
-    formdata.value.password = '';
-    formdata.value.cPassword = '';
-    formdata.value.firstname = '';
-    formdata.value.lastname = '';
-    formdata.value.middlename = '';
-    formdata.value.email = '';
-    formdata.value.phone = '';
-    formdata.value.sitio = '';
-    formdata.value.baranggay = '';
-    formdata.value.city = '';
-    formdata.value.province = '';
-    formdata.value.zipcode = '';
-};
-const openlogin = ()=>{
-    loginActive.value = true;
-  registrationActive.value = false;
-    registration_input.value = false;
-    first_input.value = false
-    login_input.value = true;
-    main_input.value = true
-    formdata.value.username = '';
-    formdata.value.password = '';
-};
 const openSecondInput = ()=>{
-    if(formdata.value.username == '' || formdata.value.password == '' || formdata.value.cPassword == ''){
-        alert('Please Fill in Empty Fields')
-    }else{
-        first_input.value = false;
-        second_input.value = true;
-    }
+    first_input.value = false;
+    second_input.value = true;
 }
 const openThirdInput = ()=>{
-    if(formdata.value.firstname == '' || formdata.value.lastname == '' || formdata.value.middlename == '' || formdata.value.email == '' || formdata.value.phone == '' ){
-        alert('Please Fill in Empty Fields')
-    }else{
-        second_input.value = false;
-        third_input.value = true;
-    }
+    second_input.value = false;
+    third_input.value = true;
 }
 const openLastInput = ()=>{
-    if(formdata.value.sitio == '' ||formdata.value.baranggay == '' ||formdata.value.city == '' ||formdata.value.province == '' ||formdata.value.zipcode == '' ){
-        alert('Please Fill in Empty Fields')
-    }else{
-        third_input.value = false;
-        last_input.value = true;
-    }
+    third_input.value = false;
+    last_input.value = true;
 }
 const backFirstInput = ()=>{
     second_input.value = false;
@@ -317,18 +228,22 @@ const backThirdInput = ()=>{
     last_input.value = false;
     third_input.value = true;
 }
-
-const userRegistration = async()=>{
+const riderRegistration = async()=>{
+    const headers = {
+            'Content-Type': 'multipart/form-data', // Specifies the content type as JSON
+            'Authorization': `Bearer ${token.value}`, // An example of an authorization header
+            'X-Custom-Header': 'CustomValue', // A custom header with a custom value
+        };
+    
+        const config = { headers }
     try {
         if(formdata.value.password != formdata.value.cPassword){
             alert('Password is not thesame!!');
-            console.log(formdata.value.password != formdata.value.cPassword)
-            console.log(formdata.value.password,formdata.value.cPassword)
         }else{
             if(formdata.value.username == '' || formdata.value.password == '' || formdata.value.cPassword == '' ||
             formdata.value.firstname == '' || formdata.value.lastname == '' || formdata.value.email == '' || formdata.value.phone == '' ||
             formdata.value.sitio == '' || formdata.value.baranggay == '' || formdata.value.city == '' || formdata.value.province == '' ||
-            formdata.value.zipcode == '' || terms.value == ''){
+            formdata.value.zipcode == ''){
                 alert('Please Fill in Empty Fields')
             }else{
                 let data = new FormData();
@@ -345,7 +260,7 @@ const userRegistration = async()=>{
                     data.append('province',formdata.value.province);
                     data.append('zipcode',formdata.value.zipcode);
                     data.append('image',formdata.value.file);
-                const response = await AuthenticationService.userRegistration(data);
+                const response = await axios.post('http://localhost:3080/api/riderRegistration',data,config);
                 if(response){
                     formdata.value.username = '';
                     formdata.value.password = '';
@@ -361,6 +276,7 @@ const userRegistration = async()=>{
                     formdata.value.province = '';
                     formdata.value.zipcode = '';
                     alert(response.data.msg);
+                    router.push('/')
                 }
             }
         }
@@ -370,68 +286,8 @@ const userRegistration = async()=>{
     }
 }
 
-const login = async()=>{
-    if(formdata.value.username == '' || formdata.value.password == ''){
-        alert('Please fill in Empty Fields')
-    }
-    try{
-        const response = await AuthenticationService.login({
-            username:formdata.value.username,
-            password:formdata.value.password,
-        })
-        if(response){
-            alert(response.data.msg);
-            authStore.setTokens(response.data.accessToken,response.data.refreshToken);
-            authStore.setUser(response.data.user);
-            if(response.data.user.role == 'admin'){
-                router.push('/admin/Dashboard');
-            }else if(response.data.user.role == 'rider'){
-                router.push('/rider/Dashboard');
-            }else{
-                router.push('/user/Dashboard');
-            }
-        }
-    }catch(error){
-        console.log(error);
-        alert(error.response.data.msg);
-    }
-}
-
-
 </script>
 
-<style  scoped>
-.custom-card{
-    height: 690px;
-}
-.riderApplication{
-    margin-top: 170px;
-}
-.normal-btn{
-    text-decoration:none;
-    padding: 3px;
-    border: solid 1px #f0e8e8;
-    border-radius: 50%;
-    background-color:#f7f3f3;
-    box-shadow: 0 0 10px #000;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: #000;
-}
-.active{
-    background-color:#030101;
-    border: solid 0.5px #030101;
-    color: #f0e8e8;
-    font-weight: bold;
-}
-.mainBackgound{
-    background-image: url('@/assets/mainBackground.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-}
-.btn{
-    background-color: #a88074ec;
-    color: #f0e8e8;
-}
+<style scoped>
+
 </style>
