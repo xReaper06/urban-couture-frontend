@@ -7,9 +7,8 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <div class="d-flex flex-row mb-4 gap-2 text-center align-items-center justify-content-center">
-                            <a href="#" class="normal-btn" @click="openlogin" :class="{ 'active': loginActive }">Login</a>
-                            <a href="#" class="normal-btn" @click="openRegistration" :class="{ 'active': registrationActive }">Create Account</a>
-         
+                            <a href="#" class="login-btn" @click="openlogin" :class="{ 'active': loginActive }">Login</a>
+                            <a href="#" class="registration-btn" @click="openRegistration" :class="{ 'active': registrationActive }">Create Account</a>    
                         </div>
                         <hr>
                         <div class="login-input" v-if="login_input">
@@ -418,9 +417,44 @@ const login = async()=>{
     padding-right: 20px;
     color: #000;
 }
+.registration-btn{
+    padding: 5px;
+    border: solid 1px #a880748a;
+    text-decoration: none;
+    background-color: #a880748a;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+    color: #f0e8e8;
+
+}
+.registration-btn:hover{
+    background-color: #a88074b7;
+    border: solid 1px #a88074b7;
+    color: #f0e8e8;
+    font-weight: bold;
+}
+.login-btn{
+    padding: 5px;
+    border: solid 1px #a880748a;
+    text-decoration: none;
+    background-color: #a880748a;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+    color: #f0e8e8;
+
+}
+
+.login-btn:hover{
+    background-color: #a88074b7;
+    border: solid 1px #a88074b7;
+    color: #f0e8e8;
+    font-weight: bold;
+}
 .active{
-    background-color:#030101;
-    border: solid 0.5px #030101;
+    background-color: #a88074b7;
+    border: solid 1px #a88074b7;
     color: #f0e8e8;
     font-weight: bold;
 }
