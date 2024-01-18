@@ -1,11 +1,10 @@
 <template>
-    <div class="mainBackgound">
+    <div>
         <div class="row">
             <div class="col-md-9">
+                <img src="@/assets/mainBackground.jpg" style="width: 100%; height: 100%;" alt="">
             </div>
             <div class="col-md-3 custom-card">
-                <div class="card h-100">
-                    <div class="card-body">
                         <div class="d-flex flex-row mb-4 gap-2 text-center align-items-center justify-content-center">
                             <a href="#" class="normal-btn" @click="openlogin" :class="{ 'active': loginActive }">Login</a>
                             <a href="#" class="normal-btn" @click="openRegistration" :class="{ 'active': registrationActive }">Create Account</a>
@@ -155,8 +154,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 </template>
 
 <script setup>
