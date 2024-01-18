@@ -145,6 +145,7 @@ try{
     width: 100%;
     padding: auto;
     cursor: pointer;
+    text-shadow: 0 0 5px #000;
 }
 .my-content{
     margin-left: 5px;
