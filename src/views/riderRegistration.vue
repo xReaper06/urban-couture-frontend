@@ -1,123 +1,128 @@
 <template>
-    <div>
-        <div class="card">
-            <div class="card-body">
-                <div class="first-input mt-3" v-if="first_input">
-                                <div class="text-center fs-5">
-                                    <strong>User Inputs:</strong>
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="username" class="form-label">Username:</label>
-                                    <input type="text" id="username" name="username" v-model="formdata.username" class="form-control" placeholder="Enter Your Username">
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="password" class="form-label">Password:</label>
-                                    <input type="password" id="password" v-model="formdata.password" name="password" class="form-control" @keyup="isStrongPassword" placeholder="Enter Your Password">
-                                    <div class="text-error" v-if="passmsgVisible">
-                                    {{ passmsg }}
+    <div class="rider-background">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="card registration-Card">
+                    <div class="card-body">
+                        <div class="first-input mt-3" v-if="first_input">
+                                        <div class="text-center fs-5">
+                                            <strong>User Inputs:</strong>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="username" class="form-label">Username:</label>
+                                            <input type="text" id="username" name="username" v-model="formdata.username" class="form-control" placeholder="Enter Your Username">
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="password" class="form-label">Password:</label>
+                                            <input type="password" id="password" v-model="formdata.password" name="password" class="form-control" @keyup="isStrongPassword" placeholder="Enter Your Password">
+                                            <div class="text-error" v-if="passmsgVisible">
+                                            {{ passmsg }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="cpassword" class="form-label">confirm password:</label>
+                                            <input type="password" id="cpassword" name="cpassword" v-model="formdata.cPassword" class="form-control" placeholder="Confirm Your Password">
+                                        </div>
+                                        <div class="d-flex justify-content-end">
+                                            <button @click="openSecondInput">Next-></button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="cpassword" class="form-label">confirm password:</label>
-                                    <input type="password" id="cpassword" name="cpassword" v-model="formdata.cPassword" class="form-control" placeholder="Confirm Your Password">
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <button @click="openSecondInput">Next-></button>
-                                </div>
-                            </div>
-                            <div class="second-input" v-if="second_input">
-                                <div class="text-center fs-5">
-                                    <strong>Personal Info:</strong>
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="fname" class="form-label">First Name:</label>
-                                    <input type="text" id="fname" name="fname" v-model="formdata.firstname" class="form-control" placeholder="Enter Your First Name">
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="lname" class="form-label">Last Name:</label>
-                                    <input type="text" id="lname" name="lname" v-model="formdata.lastname" class="form-control" placeholder="Enter Your Last Name">
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="mname" class="form-label">Middle Name:</label>
-                                    <input type="text" id="mname" name="mname" v-model="formdata.middlename" class="form-control" placeholder="Enter Your Middle Name">
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="email" class="form-label">Email:</label>
-                                    <input type="email" id="email" name="email" v-model="formdata.email" class="form-control" placeholder="Enter Your Email">
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="phone" class="form-label">Phone:</label>
-                                    <input type="tel" id="phone" name="phone" v-model="formdata.phone" class="form-control" placeholder="Pattern: 0000-000-0000" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}" required><br><br>
-                                </div>
-                                    <div class="d-flex justify-content-start">
-                                        <button @click="backFirstInput">Back</button>
+                                    <div class="second-input" v-if="second_input">
+                                        <div class="text-center fs-5">
+                                            <strong>Personal Info:</strong>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="fname" class="form-label">First Name:</label>
+                                            <input type="text" id="fname" name="fname" v-model="formdata.firstname" class="form-control" placeholder="Enter Your First Name">
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="lname" class="form-label">Last Name:</label>
+                                            <input type="text" id="lname" name="lname" v-model="formdata.lastname" class="form-control" placeholder="Enter Your Last Name">
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="mname" class="form-label">Middle Name:</label>
+                                            <input type="text" id="mname" name="mname" v-model="formdata.middlename" class="form-control" placeholder="Enter Your Middle Name">
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="email" class="form-label">Email:</label>
+                                            <input type="email" id="email" name="email" v-model="formdata.email" class="form-control" placeholder="Enter Your Email">
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="phone" class="form-label">Phone:</label>
+                                            <input type="tel" id="phone" name="phone" v-model="formdata.phone" class="form-control" placeholder="Pattern: 0000-000-0000" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}" required><br><br>
+                                        </div>
+                                            <div class="d-flex justify-content-start">
+                                                <button @click="backFirstInput">Back</button>
+                                            </div>
+                                            <span></span>
+                                            <div class="d-flex justify-content-end">
+                                                <button @click="openThirdInput">Next-></button>
+                                            </div>
                                     </div>
-                                    <span></span>
-                                    <div class="d-flex justify-content-end">
-                                        <button @click="openThirdInput">Next-></button>
+                                    <div class="third-input" v-if="third_input">
+                                        <div class="text-center fs-5">
+                                            <strong>Personal Address:</strong>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="sitio" class="form-label">Sitio/Street:</label>
+                                            <input type="text" id="sitio" name="sitio" v-model="formdata.sitio" class="form-control" placeholder="Enter Your Sitio/Street">
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="baranggay" class="form-label">Baranggay:</label>
+                                            <input type="text" id="baranggay" name="baranggay" v-model="formdata.baranggay" class="form-control" placeholder="Enter Your Baranggay">
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="city" class="form-label">City:</label>
+                                            <input type="text" id="city" name="city" class="form-control" v-model="formdata.city" placeholder="Enter Your City">
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="province" class="form-label">Province:</label>
+                                            <input type="text" id="province" name="province" v-model="formdata.province" class="form-control" placeholder="Enter Your Province">
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="zipcode" class="form-label">Zipcode:</label>
+                                            <input type="text" id="zipcode" name="zipcode" v-model="formdata.zipcode" class="form-control" placeholder="Enter Your Zipcode">
+                                        </div>
+                                            <div class="d-flex justify-content-start">
+                                                <button @click="backSecondInput">Back</button>
+                                            </div>
+                                            <span></span>
+                                            <div class="d-flex justify-content-end">
+                                                <button @click="openLastInput">Next-></button>
+                                            </div>
                                     </div>
-                            </div>
-                            <div class="third-input" v-if="third_input">
-                                <div class="text-center fs-5">
-                                    <strong>Personal Address:</strong>
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="sitio" class="form-label">Sitio/Street:</label>
-                                    <input type="text" id="sitio" name="sitio" v-model="formdata.sitio" class="form-control" placeholder="Enter Your Sitio/Street">
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="baranggay" class="form-label">Baranggay:</label>
-                                    <input type="text" id="baranggay" name="baranggay" v-model="formdata.baranggay" class="form-control" placeholder="Enter Your Baranggay">
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="city" class="form-label">City:</label>
-                                    <input type="text" id="city" name="city" class="form-control" v-model="formdata.city" placeholder="Enter Your City">
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="province" class="form-label">Province:</label>
-                                    <input type="text" id="province" name="province" v-model="formdata.province" class="form-control" placeholder="Enter Your Province">
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="zipcode" class="form-label">Zipcode:</label>
-                                    <input type="text" id="zipcode" name="zipcode" v-model="formdata.zipcode" class="form-control" placeholder="Enter Your Zipcode">
-                                </div>
-                                    <div class="d-flex justify-content-start">
-                                        <button @click="backSecondInput">Back</button>
+                                    <div class="last-input" v-if="last_input">
+                                        <div class="text-center fs-5">
+                                            <strong>Profile Image:</strong>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="profile" class="form-label">Profile</label>
+                                            <input type="file" name="image" id="image" @change="handleimageChange">
+                                            <div v-if="showFile">
+                                              <img :src="fileView.preview" alt="Selected Image" style="max-width: 100px; max-height: 100px;">
+                                          </div>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                        <label class="form-check-label" for="invalidCheck">
+                                            Agree to terms and conditions
+                                        </label>
+                                        <div class="invalid-feedback">
+                                            You must agree before submitting.
+                                        </div>
+                                        </div>
+                                        <div class="d-flex justify-content-start">
+                                                <button @click="backThirdInput">Back</button>
+                                            </div>
+                                            <span></span>
+                                            <div class="d-flex justify-content-end">
+                                                <button class="btn btn-success" @click="riderRegistration" type="submit">Submit Registration</button>
+                                            </div>
                                     </div>
-                                    <span></span>
-                                    <div class="d-flex justify-content-end">
-                                        <button @click="openLastInput">Next-></button>
-                                    </div>
-                            </div>
-                            <div class="last-input" v-if="last_input">
-                                <div class="text-center fs-5">
-                                    <strong>Profile Image:</strong>
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="profile" class="form-label">Profile</label>
-                                    <input type="file" name="image" id="image" @change="handleimageChange">
-                                    <div v-if="showFile">
-                                      <img :src="fileView.preview" alt="Selected Image" style="max-width: 100px; max-height: 100px;">
-                                  </div>
-                                </div>
-                                <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                <label class="form-check-label" for="invalidCheck">
-                                    Agree to terms and conditions
-                                </label>
-                                <div class="invalid-feedback">
-                                    You must agree before submitting.
-                                </div>
-                                </div>
-                                <div class="d-flex justify-content-start">
-                                        <button @click="backThirdInput">Back</button>
-                                    </div>
-                                    <span></span>
-                                    <div class="d-flex justify-content-end">
-                                        <button class="btn btn-success" @click="riderRegistration" type="submit">Submit Registration</button>
-                                    </div>
-                            </div>
+                    </div>
             </div>
+        </div>
         </div>
     </div>
 </template>
@@ -289,5 +294,14 @@ const riderRegistration = async()=>{
 </script>
 
 <style scoped>
-
+.registration-Card{
+    margin-top: 20px;
+    height: 660px;
+    background-color: rgba(233, 221, 221, 0.295);
+}
+.rider-background{
+    background-image: url('@/assets/riderBackground.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 </style>

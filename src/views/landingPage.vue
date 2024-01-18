@@ -1,14 +1,17 @@
 <template>
+<<<<<<< HEAD
     <div>
+=======
+    <div >
+>>>>>>> 587f22ae37a2bdc7ac75c7613c10a2cfba2b760a
         <div class="row">
             <div class="col-md-9">
                 <img src="@/assets/mainBackground.jpg" style="width: 100%; height: 100%;" alt="">
             </div>
             <div class="col-md-3 custom-card">
                         <div class="d-flex flex-row mb-4 gap-2 text-center align-items-center justify-content-center">
-                            <a href="#" class="normal-btn" @click="openlogin" :class="{ 'active': loginActive }">Login</a>
-                            <a href="#" class="normal-btn" @click="openRegistration" :class="{ 'active': registrationActive }">Create Account</a>
-         
+                            <a href="#" class="login-btn" @click="openlogin" :class="{ 'active': loginActive }">Login</a>
+                            <a href="#" class="registration-btn" @click="openRegistration" :class="{ 'active': registrationActive }">Create Account</a>    
                         </div>
                         <hr>
                         <div class="login-input" v-if="login_input">
@@ -415,18 +418,53 @@ const login = async()=>{
     padding-right: 20px;
     color: #000;
 }
-.active{
-    background-color:#030101;
-    border: solid 0.5px #030101;
+.registration-btn{
+    padding: 5px;
+    border: solid 1px #a880748a;
+    text-decoration: none;
+    background-color: #a880748a;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+    color: #f0e8e8;
+
+}
+.registration-btn:hover{
+    background-color: #a88074b7;
+    border: solid 1px #a88074b7;
     color: #f0e8e8;
     font-weight: bold;
 }
-.mainBackgound{
+.login-btn{
+    padding: 5px;
+    border: solid 1px #a880748a;
+    text-decoration: none;
+    background-color: #a880748a;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+    color: #f0e8e8;
+
+}
+
+.login-btn:hover{
+    background-color: #a88074b7;
+    border: solid 1px #a88074b7;
+    color: #f0e8e8;
+    font-weight: bold;
+}
+.active{
+    background-color: #a88074b7;
+    border: solid 1px #a88074b7;
+    color: #f0e8e8;
+    font-weight: bold;
+}
+/* .mainBackgound{
     background-image: url('@/assets/mainBackground.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-}
+} */
 .btn{
     background-color: #a88074ec;
     color: #f0e8e8;
