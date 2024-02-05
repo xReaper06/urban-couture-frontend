@@ -36,8 +36,8 @@
                     Total Price: P{{ totalPrice.toFixed(2) }}
                 </div>
                 <p class="text-muted small-text">available stocks: ( {{ product.updated_stocks }}pcs )</p>
-                <button class="btn btn-secondary" @click="addToCart">Add to cart</button>
-                <button class="btn btn-warning ms-2" @click="butNow">Buy Now</button>
+                <button class="btn btn-success" @click="addToCart">Add to cart</button>
+                <button class="btn btn-warning ms-2" @click="buyNow">Buy Now</button>
             </div>
             <hr>
             <div class="col-md-12 mb-5">
@@ -140,7 +140,7 @@ const confirmBuy = async()=>{
     });
     }
 }
-const butNow = ()=>{
+const buyNow = ()=>{
     Swal.fire({
   title: "Are You sure you want to buy this?",
   text: "You won't be able to revert this!",
