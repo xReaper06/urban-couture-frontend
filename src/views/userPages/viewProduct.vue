@@ -37,6 +37,7 @@
                 </div>
                 <p class="text-muted small-text">available stocks: ( {{ product.updated_stocks }}pcs )</p>
                 <button class="btn btn-secondary" @click="addToCart">Add to cart</button>
+                <button class="btn btn-warning ms-2" @click="butNow">Buy Now</button>
             </div>
             <hr>
             <div class="col-md-12 mb-5">
@@ -71,6 +72,7 @@
 import { defineProps,ref,onMounted,computed } from 'vue';
 import AuthenticationService from '@/service/AuthenticationService';
 import ratingStars from '@/components/ratingStars.vue';
+import Swal from 'sweetalert2'
 const props = defineProps({
     id:Number
 });
@@ -102,6 +104,56 @@ const addToCart = async()=>{
         console.log(error);
         alert(error.response.data.msg);
     }
+}
+const confirmBuy = async()=>{
+    let SelectedItems = []
+    SelectedItems.push({
+        id: props.id,
+      image:product.value.image,
+      productname: product.value.productname,
+      quantity: quantity.value,
+      price: totalPrice.value
+    })
+    try {
+        const response = await AuthenticationService.buyNow({
+            prod_id:parseInt(props.id),
+            quantity:quantity.value,
+            totalPrice:totalPrice.value,
+            selectedItems:SelectedItems
+        })
+        if(response){
+            Swal.fire({
+      title: "Purchased!",
+      text: response.data.msg,
+      icon: "success"
+    });
+            
+            SelectedItems = []
+            quantity.value = 1;
+        }
+    } catch (error) {
+        console.log(error);
+        Swal.fire({
+      title: "Error!",
+      text: error.response.data.msg,
+      icon: "error"
+    });
+    }
+}
+const butNow = ()=>{
+    Swal.fire({
+  title: "Are You sure you want to buy this?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, Purchase it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    confirmBuy()
+  }
+});
 }
 const getProduct = async()=>{
     try {

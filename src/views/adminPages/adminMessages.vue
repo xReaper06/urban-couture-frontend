@@ -3,8 +3,10 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="card">
-                    <div class="card-header">
-                        Chats
+                    <div class="card-header header">
+                        <div class="fs-6 text-light text-shadow"><strong>
+                            Chats
+                        </strong></div>
                     </div>
                     <div class="card-body custom-room">
                         <div v-for="room in rooms" :key="room.id">
@@ -23,8 +25,10 @@
             </div>
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">
-                        Order ID: {{ room_id }}
+                    <div class="card-header header">
+                        <div class="fs-6 text-light text-shadow"><strong>
+                            Order ID: {{ room_id }}
+                        </strong></div>
                     </div>
                     <div class="card-body custom-body">
                         <div class="messages">
@@ -32,7 +36,7 @@
                     </div>
                     <div class="input-group">
                         <input type="text" placeholder="type your message...." v-model="context" class="form-control">
-                        <button @click="sendMessage">Send</button>
+                        <button @click="sendMessage" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-send-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z" /><path d="M6.5 12h14.5" /></svg></button>
                     </div>
                 </div>
             </div>
@@ -202,6 +206,12 @@ watchEffect(()=>{
 .custom-body{
     height: 350px;
     overflow-y: scroll;
+}
+.text-shadow{
+    text-shadow: 0 0 5px #000;
+}
+.header{
+    background-color: #be9183ec;
 }
 .custom-room{
     height: 350px;

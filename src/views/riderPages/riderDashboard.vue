@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="m-3">
-            <button @click="getAllItemsTobeDeliver">Refresh</button>
+            <button @click="getAllItemsTobeDeliver" class="btn btn-primary">Refresh</button>
         </div>
         <div class="container-fluid mb-5">
             <div class="card">
@@ -13,6 +13,7 @@
                                 <th>ID</th>
                                 <th>ORDER ID</th>
                                 <th>RECIEVER</th>
+                                <th>PHONE</th>
                                 <th>ADDRESS</th>
                                 <th>TOTAL PRICE</th>
                                 <th>ACTION</th>
@@ -23,6 +24,7 @@
                                 <td>{{ item.id }}</td>
                                 <td>{{ item.order_id }}</td>
                                 <td>{{ item.fullname }}</td>
+                                <td>{{ item.phone }}</td>
                                 <td>{{ item.address }}</td>
                                 <td>P{{ item.totalPrice }}</td>
                                 <td><button @click="openModal(item.order_id)">Product Delivered</button></td>
@@ -40,6 +42,7 @@
                                 <th>ID</th>
                                 <th>ORDER ID</th>
                                 <th>RECIEVER</th>
+                                <th>PHONE</th>
                                 <th>ADDRESS</th>
                                 <th>TOTAL PRICE</th>
                                 <th>ACTION</th>
@@ -50,6 +53,7 @@
                                 <td>{{ item.id }}</td>
                                 <td>{{ item.order_id }}</td>
                                 <td>{{ item.fullname }}</td>
+                                <td>{{ item.phone }}</td>
                                 <td>{{ item.address }}</td>
                                 <td>P{{ item.totalPrice }}</td>
                                 <td>

@@ -13,7 +13,7 @@
             <div class="card">
                 <div class="card-body custom-height">
                     <div class="row gap-2">
-            <div class="col-md-3 mb-2" v-for="prod in filterProduct" :key="prod.id">
+            <div class="col-md mb-2" v-for="prod in filterProduct" :key="prod.id">
                 <router-link :to="{name:'viewProduct',props:{id:prod.id},params:{id:prod.id}}" class="custom-link">
                     <div class="card product-card">
                     <div class="card-body">

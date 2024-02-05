@@ -100,11 +100,17 @@ export default{
     getAllItemDelivered(){
         return Api().get('/getAllItemDelivered')
     },
+    featuredProducts(){
+        return Api().get('/featuredProducts')
+    },
     UpdateQuantity(credentials){
         return Api().post('/UpdateQuantity',credentials);
     },
     removeFromCart(credentials){
         return Api().post('/removeFromCart',credentials);
+    },
+    editProduct(credentials){
+        return Api().post('/editProduct',credentials);
     },
     getAllInformation(){
         return Api().get('/getAllInformation');
@@ -141,5 +147,11 @@ export default{
     },
     unavailableStock(credentials){
         return Api().post('/unavailableStock',credentials);
+    },
+    availableStock(credentials){
+        return Api().post('/availableStock',credentials);
+    },
+    buyNow(credentials){
+        return Api().post('/buyNow',credentials);
     },
 }

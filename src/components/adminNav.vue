@@ -138,16 +138,6 @@ font-size: 15px;
   background-color: #be9183ec;
 }
 .custom-link{
-<<<<<<< HEAD
-  display: block; 
-  color: #ffffff;
-  text-decoration: none;
-  padding: 10px;
-  width: 100%;
-  padding: auto;
-  cursor: pointer;
-  text-shadow: 0 0 5px #000;
-=======
     display: block; 
     color: #ffffff;
     text-decoration: none;
@@ -156,7 +146,6 @@ font-size: 15px;
     padding: auto;
     cursor: pointer;
     text-shadow: 0 0 5px #000;
->>>>>>> 587f22ae37a2bdc7ac75c7613c10a2cfba2b760a
 }
 .my-content{
   margin-left: 5px;

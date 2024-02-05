@@ -2,24 +2,21 @@
     <div>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="#"><img src="@/assets/mainLogo.jpg" alt="main Logo" class="img-fluid me-4" style="height: 50px; width:100px;" ></a>
+                <form class="searchBar"  role="search">
+<input class="form-control me-2" type="search" @click="openModal" placeholder="click to Search" aria-label="Search">
+</form>
                 <button class="navbar-toggler" type="button" @click="openMain" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" :class="{ show: showMain }" id="navbarNavDropdown">
-                    <ul class="navbar-nav text-center">
-                        <li class="nav-item searchParent">
-                            <form class="searchBar"  role="search">
-        <input class="form-control me-2" type="search" @click="openModal" placeholder="click to Search" aria-label="Search">
-        </form>
-                        </li>
-                        <li class="nav-item dropdown ms">
+                <div class="collapse navbar-collapse justify-content-end" :class="{ show: showMain }" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" @click="openCollapse" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img :src="`http://localhost:3080/api/images/${usersInfo.profile_picture}`" alt="" class="img-fluid" style="height: 35px; width: 35px; border-radius: 50%; border: solid 0.5px #000; box-shadow: 0 0 2px #000;" >
                 {{ usersInfo.fullname }}
                             </a>
                             <ul class="dropdown-menu" :class="{ show: showCollapse }">
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
                                 <li><a class="dropdown-item" href="#" @click="logout">Log Out</a></li>
                             </ul>
                         </li>
@@ -104,12 +101,13 @@ try{
 </script>
 
 <style scoped>
+.searchBar{
+    display: flex;
+    justify-content: center;
+}
 .searchBar:hover{
     box-shadow: 0 0 10px rgba(00, 00, 00, 0.4);
     border-radius: 5px;
-}
-.ms{
-    margin-left: 250px;
 }
 .searchParent{
     margin-left: 400px;

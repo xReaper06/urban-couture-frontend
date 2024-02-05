@@ -3,8 +3,12 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="card">
-                    <div class="card-header">
-                        Chats
+                    <div class="card-header header">
+                        <div class="fs-6 text-light text-shadow">
+                            <strong>
+                                Chats
+                            </strong>
+                        </div>
                     </div>
                     <div class="card-body custom-room">
                         <div v-for="room in rooms" :key="room.id">
@@ -19,8 +23,10 @@
             </div>
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">
-                        Admin
+                    <div class="card-header header">
+                        <div class="fs-6 text-light text-shadow"><strong>
+                            Admin
+                        </strong></div>
                     </div>
                     <div class="card-body custom-body">
                         <div class="messages">
@@ -198,6 +204,12 @@ watchEffect(()=>{
 .custom-body{
     height: 350px;
     overflow-y: scroll;
+}
+.text-shadow{
+    text-shadow: 0 0 5px #000;
+}
+.header{
+    background-color: #be9183ec;
 }
 .custom-room{
     height: 350px;

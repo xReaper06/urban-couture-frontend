@@ -59,7 +59,7 @@ watchEffect(()=>{
   }
   
   .filled {
-    color: #ffcc00;
+    color: #e7d90be8;
   }
   
   .readonly-stars {
