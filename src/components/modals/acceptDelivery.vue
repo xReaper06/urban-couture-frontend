@@ -29,14 +29,14 @@
                                 <td>{{ item.quantity }}</td>
                                 <td>P{{ item.price }}</td>
                                 <td>
-                                    <button @click="openRateModal(item.id)">Rate</button>
+                                    <button @click="openRateModal(item.id)" class="btn btn-secondary">Rate</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="mt-5">
-                  <button @click="confirmDelivery">Confirmed</button>
+                  <button @click="confirmDelivery" class="btn btn-primary">done</button>
               </div>
               </div>
             </div>

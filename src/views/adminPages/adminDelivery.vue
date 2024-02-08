@@ -11,7 +11,6 @@
                 <thead>
                     <tr>
                         <th class="text-light bg-dark">ORDER ID</th>
-                        <th class="text-light bg-dark">RidersName</th>
                         <th class="text-light bg-dark">Reciever's Name</th>
                         <th class="text-light bg-dark">Address</th>
                         <th class="text-light bg-dark">Contact Number</th>
@@ -23,7 +22,6 @@
                 <tbody>
                     <tr v-for="order in orders" :key="order.id">
                         <td>{{ order.order_id }}</td>
-                        <td>{{ order.ridername }}</td>
                         <td>{{ order.fullname }}</td>
                         <td>{{ order.address }} {{ order.zipcode }}</td>
                         <td>#{{ order.phone }}</td>

@@ -29,7 +29,8 @@
                         <td><order-status
                         :status="order.status"
                         /></td>
-                        <td><button class="btn btn-primary" @click="openModal(JSON.parse(order.products))">ViewProd</button>
+                        <td><button class="btn btn-primary" @click="openModal(JSON.parse(order.products))">View Product</button>
+                            <button class="btn btn-success" @click="deliveredProduct(order.order_id)">Delivered</button>
                         </td>
                     </tr>
                 </tbody>
@@ -72,6 +73,21 @@ const getAllItemsShipped = async()=>{
 onMounted(()=>{
     getAllItemsShipped()
 })
+const deliveredProduct = async(order_id)=>{
+    try{
+        const response = await AuthenticationService.deliver({
+            order_id:order_id
+        })
+        if(response){
+            alert(response.data.msg);
+            getAllItemsShipped();
+        }
+    }catch(error){
+        console.log(error)
+        alert(error.response.data.msg)
+    }
+}
+
 
 </script>
 

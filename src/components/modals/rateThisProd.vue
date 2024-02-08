@@ -20,7 +20,7 @@
                 </select>
                 <label for="comment" class="form-label">Comment</label>
                 <textarea name="comment" v-model="comment" id="comment" class="form-control" cols="30" rows="10" required>Write your Comment...</textarea>
-                <button @click="RateProduct">Rate</button>
+                <button @click="RateProduct" class="btn btn-success">Rate</button>
               </div>
             </div>
             </div>

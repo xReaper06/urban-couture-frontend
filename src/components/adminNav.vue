@@ -34,9 +34,9 @@
             <router-link class="custom-link text-small" :class="{'active-link':isActive('/admin/Shipped')}" to="/admin/Shipped">
               Shipped
             </router-link>
-            <router-link class="custom-link text-small" :class="{'active-link':isActive('/admin/DeliveryInfo')}" to="/admin/DeliveryInfo">
+            <!-- <router-link class="custom-link text-small" :class="{'active-link':isActive('/admin/DeliveryInfo')}" to="/admin/DeliveryInfo">
               DeliveryInfo
-            </router-link>
+            </router-link> -->
             <router-link class="custom-link text-small" :class="{'active-link':isActive('/admin/History')}" to="/admin/History">
               History
             </router-link>
@@ -52,7 +52,7 @@
             </Strong>
           </router-link>
         </li>
-        <li class="nav-item" @click="openRiderCollapse">
+        <!-- <li class="nav-item" @click="openRiderCollapse">
           <a class="custom-link">
             <strong>
               Rider
@@ -66,7 +66,7 @@
               Riders Applicant
             </router-link>
           </div>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="custom-link" @click="logout">
             <strong>Log out</strong>
@@ -92,7 +92,7 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import {useAuthStore} from '@/store'
 import AuthenticationService from '@/service/AuthenticationService';
-const showRiderCollapse = ref(false)
+// const showRiderCollapse = ref(false)
 const authStore = useAuthStore();
 const router = useRouter();
 const isActive = (route) => router.currentRoute.value.path === route;
@@ -101,12 +101,12 @@ const showProductCollase =ref(false);
 
 const openProductCollapse = ()=>{
 showProductCollase.value = !showProductCollase.value;
-showRiderCollapse.value = false
+// showRiderCollapse.value = false
 }
-const openRiderCollapse = ()=>{
-showRiderCollapse.value = !showRiderCollapse.value
-showProductCollase.value = false
-}
+// const openRiderCollapse = ()=>{
+// showRiderCollapse.value = !showRiderCollapse.value
+// showProductCollase.value = false
+// }
 
 const logout = async ()=>{
 try{  

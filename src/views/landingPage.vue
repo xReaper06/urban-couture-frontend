@@ -26,10 +26,10 @@
                                 <div class="d-flex justify-content-end">
                                     <button class="btn" @click="login" @keyup.enter="login">Sign in</button>
                                 </div>
-                                <div class="riderApplication">
+                                <!-- <div class="riderApplication">
                                     You want to be part of our Riders Team? Apply Now
                                     <router-link class="btn" to="/Application">Click Here!</router-link>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="registration-inputs" v-if="registration_input">

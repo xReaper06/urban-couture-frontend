@@ -194,7 +194,7 @@ router.beforeEach((to, from, next) => {
   // Check if the user is authenticated
   if (to.meta.requiresAuth && !authStore.isAuthenticated) {
     // Redirect to the login page or an unauthorized page
-    next('/user/login'); // Adjust the destination route as needed
+    next('/'); // Adjust the destination route as needed
   } else if (requiredRoles && requiredRoles.length > 0) {
     // Check if the user has the required role
     const parseUser = JSON.parse(user);

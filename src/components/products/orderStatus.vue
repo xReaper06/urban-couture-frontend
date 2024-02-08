@@ -9,12 +9,6 @@
         <div v-else-if="props.status == 3">
             Status: <span class="badge rounded-pill text-bg-success">Shipped</span>
         </div>
-        <div v-else-if="props.status == 4">
-            Status: <span class="badge rounded-pill text-bg-success">delivering</span>
-        </div>
-        <div v-else-if="props.status == 5">
-            Status: <span class="badge rounded-pill text-bg-success">Confirming Delivered Products</span>
-        </div>
         <div v-else>
             Status: <span class="badge rounded-pill text-bg-success">Confirmed Delivered</span>
         </div>

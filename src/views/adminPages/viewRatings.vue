@@ -1,6 +1,6 @@
 <template>
     <div>
-            <router-link to="/admin/Ratings">back </router-link>
+            <router-link to="/admin/Ratings"><button class="btn btn-primary">Back</button> </router-link>
                 <div class="text-center fs-3">Reviews</div>
                 <hr>
                 <div class="container-fluid">

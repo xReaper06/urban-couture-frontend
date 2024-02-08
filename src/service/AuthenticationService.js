@@ -154,4 +154,7 @@ export default{
     buyNow(credentials){
         return Api().post('/buyNow',credentials);
     },
+    deliver(credentials){
+        return Api().post('/deliver',credentials);
+    },
 }

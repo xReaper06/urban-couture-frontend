@@ -11,7 +11,7 @@
                 <thead>
                     <tr>
                         <th class="text-light bg-dark">ORDER ID</th>
-                        <th class="text-light bg-dark">Riders Name</th>
+                        <!-- <th class="text-light bg-dark">Riders Name</th> -->
                         <th class="text-light bg-dark">Reciever's name</th>
                         <th class="text-light bg-dark">Address</th>
                         <th class="text-light bg-dark">Contact Number</th>
@@ -23,7 +23,7 @@
                 <tbody>
                     <tr v-for="order in orders" :key="order.id">
                         <td>{{ order.order_id }}</td>
-                        <td>{{ order.ridername }}</td>
+                        <!-- <td>{{ order.ridername }}</td> -->
                         <td>{{ order.fullname }}</td>
                         <td>{{ order.address }} {{ order.zipcode }}</td>
                         <td>#{{ order.phone }}</td>
@@ -32,7 +32,7 @@
                         :status="order.status"
                         /></td>
                         <td><button class="btn btn-primary" @click="openModal(JSON.parse(order.products))">ViewProd</button>
-                        <button class="btn btn-secondary" @click="openViewModal(order.proof)">View Proof</button>
+                        <!-- <button class="btn btn-secondary" @click="openViewModal(order.proof)">View Proof</button> -->
                         </td>
                     </tr>
                 </tbody>
@@ -61,15 +61,15 @@ const openModal = (data)=>{
 const closeModal = ()=>{
     showModal.value = false
 }
-const proof = ref(null);
-const showViewModal = ref(false)
-const openViewModal = (data)=>{
-    showViewModal.value = true;
-    proof.value = data;
-}
-const closeViewModal = ()=>{
-    showViewModal.value = false
-}
+// const proof = ref(null);
+// const showViewModal = ref(false)
+// const openViewModal = (data)=>{
+//     showViewModal.value = true;
+//     proof.value = data;
+// }
+// const closeViewModal = ()=>{
+//     showViewModal.value = false
+// }
 
 
 const ProductSoldHistory = async()=>{

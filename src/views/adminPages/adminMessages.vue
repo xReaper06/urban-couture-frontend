@@ -106,7 +106,7 @@ const getConvo = async(data)=>{
             convo.forEach(data=>{
                 if(data.user_id == username.value.id){
                     messageHTML+=`
-                    <div class="d-flex justify-content-end mb-2 w-auto h-auto">
+                    <div class="d-flex justify-content-end mb-3 w-auto h-auto">
                         <div class="card bg-primary w-50 text-light">
                             <div class="card-body">
                                 <p class="text-end">
@@ -120,7 +120,7 @@ const getConvo = async(data)=>{
                     `
                 }else{
                     messageHTML+=`
-                    <div class="d-flex justify-content-start mb-2 w-auto h-auto">
+                    <div class="d-flex justify-content-start mb-3 w-auto h-auto">
                         <div class="card w-50">
                             <div class="card-body">
                                 <p>
@@ -133,7 +133,8 @@ const getConvo = async(data)=>{
                     </div>
                     `
                 }
-                messageBox.innerHTML += messageHTML;
+                messageBox.insertAdjacentHTML('beforeend', messageHTML);
+        messageBox.scrollTop = messageBox.scrollHeight;
             })
         }
     } catch (error) {
@@ -159,7 +160,7 @@ const appendMessage = (data)=>{
             let messageHTML = ``
                 if(data.user_id == username.value.id){
                     messageHTML+=`
-                    <div class="d-flex justify-content-end mb-2 w-auto h-auto">
+                    <div class="d-flex justify-content-end mb-3 w-auto h-auto">
                         <div class="card bg-primary w-50 text-light">
                             <div class="card-body">
                                 <p class="text-end">
@@ -173,7 +174,7 @@ const appendMessage = (data)=>{
                     `
                 }else{
                     messageHTML+=`
-                    <div class="d-flex justify-content-start mb-2 w-auto h-auto">
+                    <div class="d-flex justify-content-start mb-3 w-auto h-auto">
                         <div class="card w-50">
                             <div class="card-body">
                                 <p>
@@ -186,7 +187,10 @@ const appendMessage = (data)=>{
                     </div>
                     `
                 }
-                messageBox.innerHTML += messageHTML;
+                
+                messageBox.insertAdjacentHTML('beforeend', messageHTML);
+        messageBox.scrollTop = messageBox.scrollHeight;
+
 }
 onMounted(()=>{
     getAllRooms();
@@ -205,13 +209,18 @@ watchEffect(()=>{
 <style scoped>
 .custom-body{
     height: 350px;
-    overflow-y: scroll;
+    
 }
 .text-shadow{
     text-shadow: 0 0 5px #000;
 }
 .header{
     background-color: #be9183ec;
+}
+.messages{
+    height: 345px;
+
+    overflow-y: scroll;
 }
 .custom-room{
     height: 350px;

@@ -22,8 +22,8 @@
                                 <order-status :status="item.status"/>
                             </td>
                             <td>
-                                <div v-if="item.status == 5">
-                                    <button class="btn" @click="openAcceptModal(JSON.parse(item.products),item.order_id)">Confirm Delivery</button>
+                                <div v-if="item.status == 4">
+                                    <button class="btn" @click="openAcceptModal(JSON.parse(item.products),item.order_id)">Rate Products</button>
                                 </div>
                                 <div v-else>
                                     <button class="btn" @click="openModal(JSON.parse(item.products))">Show Ordered Products</button>

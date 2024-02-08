@@ -34,7 +34,7 @@
                     </div>
                     <div class="input-group">
                         <input type="text" placeholder="type your message...." v-model="context" class="form-control">
-                        <button @click="sendMessage">Send</button>
+                        <button @click="sendMessage" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-send-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z" /><path d="M6.5 12h14.5" /></svg></button>
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@ const getConvo = async(data)=>{
             convo.forEach(data=>{
                 if(data.user_id == username.value.id){
                     messageHTML+=`
-                    <div class="d-flex justify-content-end mb-2 w-auto h-auto">
+                    <div class="d-flex justify-content-end mb-3 w-auto h-auto">
                         <div class="card bg-primary w-50 text-light">
                             <div class="card-body">
                                 <p class="text-end">
@@ -118,7 +118,7 @@ const getConvo = async(data)=>{
                     `
                 }else{
                     messageHTML+=`
-                    <div class="d-flex justify-content-start mb-2 w-auto h-auto">
+                    <div class="d-flex justify-content-start mb-3 w-auto h-auto">
                         <div class="card w-50">
                             <div class="card-body">
                                 <p>
@@ -131,8 +131,11 @@ const getConvo = async(data)=>{
                     </div>
                     `
                 }
-                messageBox.innerHTML += messageHTML;
+                messageBox.insertAdjacentHTML('beforeend', messageHTML);
+            
+        messageBox.scrollTop = messageBox.scrollHeight;
             })
+          
         }
     } catch (error) {
         console.log(error)
@@ -152,40 +155,44 @@ const sendMessage = async()=>{
     context.value = ''
   }
 }
-const appendMessage = (data)=>{
+const appendMessage = (data) => {
     const messageBox = document.querySelector('.messages');
-            let messageHTML = ``
-                if(data.user_id == username.value.id){
-                    messageHTML+=`
-                    <div class="d-flex justify-content-end mb-2 w-auto h-auto">
-                        <div class="card bg-primary w-50 text-light">
-                            <div class="card-body">
-                                <p class="text-end">
-                                    <strong>
-                                        ${data.context}
-                                    </strong>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    `
-                }else{
-                    messageHTML+=`
-                    <div class="d-flex justify-content-start mb-2 w-auto h-auto">
-                        <div class="card w-50">
-                            <div class="card-body">
-                                <p>
-                                    <strong>
-                                        ${data.context}
-                                    </strong>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    `
-                }
-                messageBox.innerHTML += messageHTML;
-}
+    let messageHTML = '';
+
+    if (data.user_id == username.value.id) {
+        messageHTML = `
+        <div class="d-flex justify-content-end mb-3 w-auto h-auto">
+            <div class="card bg-primary w-50 text-light">
+                <div class="card-body">
+                    <p class="text-end">
+                        <strong>
+                            ${data.context}
+                        </strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+        `;
+    } else {
+        messageHTML = `
+        <div class="d-flex justify-content-start mb-3 w-auto h-auto">
+            <div class="card w-50">
+                <div class="card-body">
+                    <p>
+                        <strong>
+                            ${data.context}
+                        </strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+        `;
+    }
+
+    messageBox.insertAdjacentHTML('beforeend', messageHTML);
+    messageBox.scrollTop = messageBox.scrollHeight;
+};
+
 onMounted(()=>{
     getMyRoom();
 })
@@ -203,13 +210,16 @@ watchEffect(()=>{
 <style scoped>
 .custom-body{
     height: 350px;
-    overflow-y: scroll;
 }
 .text-shadow{
     text-shadow: 0 0 5px #000;
 }
 .header{
     background-color: #be9183ec;
+}
+.messages{
+    height: 345px;
+    overflow-y: scroll;
 }
 .custom-room{
     height: 350px;
