@@ -44,7 +44,7 @@
                             :status="prod.status"
                             /></td>
                         <td><button @click="openAddModal(prod)" class="btn btn-success">Add Stocks</button>
-                            <button @click="openeditModal(prod)" class="btn btn-secondary">Edit Stocks</button>
+                            <button @click="openeditModal(prod)" class="btn btn-secondary">Edit Product</button>
                             <div v-if="prod.status < 2">
                                 <button @click="unavailableStock(prod)" class="btn btn-danger">Unavailable</button>
                             </div>

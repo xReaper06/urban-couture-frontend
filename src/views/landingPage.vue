@@ -21,15 +21,15 @@
                                 </div>
                                 <div class="form-group mb-2">
                                     <label for="password" class="form-label">Password:</label>
-                                    <input type="password" id="password" name="password" v-model="formdata.password" class="form-control" placeholder="Enter Your Password">
+                                    <input :type="eyeOpen ? 'text' : 'password'" id="password" name="password" v-model="formdata.password" class="form-control" placeholder="Enter Your Password">
+                                    <div class="checkPass" @click="checkPassword">
+                                        <svg v-if="eyeOpen" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+                                        <svg v-else xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-closed" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M21 9c-2.4 2.667 -5.4 4 -9 4c-3.6 0 -6.6 -1.333 -9 -4" /><path d="M3 15l2.5 -3.8" /><path d="M21 14.976l-2.492 -3.776" /><path d="M9 17l.5 -4" /><path d="M15 17l-.5 -4" /></svg>
+                                    </div>
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <button class="btn" @click="login" @keyup.enter="login">Sign in</button>
                                 </div>
-                                <!-- <div class="riderApplication">
-                                    You want to be part of our Riders Team? Apply Now
-                                    <router-link class="btn" to="/Application">Click Here!</router-link>
-                                </div> -->
                             </div>
                         </div>
                         <div class="registration-inputs" v-if="registration_input">
@@ -168,11 +168,15 @@ let third_input = ref(false);
 let last_input = ref(false);
 let main_input = ref(true);
 let loginActive = ref(true);
+let eyeOpen = ref(false);
 let registrationActive = ref(false);
 const isPhoneNumberValid = ref(true);
 const authStore = useAuthStore();
 const router = useRouter();
 
+const checkPassword = ()=>{
+    eyeOpen.value = !eyeOpen.value
+}
 
 const fileView = ref({ preview: "" });
 const showFile = ref(false);
@@ -462,6 +466,10 @@ const login = async()=>{
     background-size: cover;
     width: 100%;
 } */
+.checkPass{
+    cursor: pointer;
+    transform:translate(90%,-120%);
+}
 .btn{
     background-color: #a88074ec;
     color: #f0e8e8;

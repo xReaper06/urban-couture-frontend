@@ -3,21 +3,14 @@
         <div class="text-center fs-3"><strong>Reports</strong></div>
         <div class="card">
           <div class="card-body">
-            <div class="row">
-            <div class="col-md-5">
+            <div class="justify-content-center w-25">
                 <div class="card">
                     <div class="card-body">
                         Total Sales (P{{ allSales.total }})
                     </div>
                 </div>
             </div>
-            <div class="col-md-5">
-                <div class="card">
-                    <div class="card-body">
-                        riders applicant ({{ allApplicants.applicants }})
-                    </div>
-                </div>
-            </div>
+            <div class="row">
             <div class="col-md-6 mt-5">
                 <div class="card">
                   <div class="card-header text-center">Product sales</div>
@@ -69,7 +62,6 @@ import AuthenticationService from '@/service/AuthenticationService';
 import Chart from 'chart.js/auto';
 
 const allSales = ref([]);
-const allApplicants = ref([])
 const allProductNames = ref([])
 const allProductValue = ref([])
 const productName = ref([])
@@ -82,7 +74,6 @@ const allsales = async()=>{
         const response = await AuthenticationService.allSales();
         if(response){
             allSales.value = response.data.allsales
-            allApplicants.value = response.data.countApplicants
             allProductNames.value = response.data.allProductName
             allProductValue.value = response.data.products
             allProductNames.value.forEach(data=>{

@@ -157,4 +157,7 @@ export default{
     deliver(credentials){
         return Api().post('/deliver',credentials);
     },
+    cancelOrder(credentials){
+        return Api().post('/cancelOrder',credentials);
+    },
 }

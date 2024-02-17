@@ -14,7 +14,11 @@
                         :status="order.status"
                         />
                         </div>
-                    <div><button class="btn btn-primary" @click="openModal(JSON.parse(order.products))">View</button></div>
+                    <div><button class="btn btn-primary" @click="openModal(JSON.parse(order.products))">View</button>
+                        <div v-if="order.status == 1">
+                        <button class="btn btn-danger" @click="cancelOrder(order.order_id)">Cancel Order</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,6 +43,20 @@ const closeModal = ()=>{
     showModal.value = false
 }
 
+const cancelOrder = async(order_id)=>{
+    try {
+        const response = await AuthenticationService.cancelOrder({
+            orderID:order_id
+        })
+        if(response){
+            alert(response.data.msg);
+            trackMyorder()
+        }
+    } catch (error) {
+        alert(error.response.data.msg);
+        console.log(error)
+    }
+}
 const trackMyorder = async()=>{
     try{
         const response = await AuthenticationService.trackMyorder();
